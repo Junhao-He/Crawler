@@ -21,7 +21,7 @@ from selenium import webdriver
 def save_imgs_base64(imgs, file_name, page):
     if imgs:
         # 可自动关闭请求和响应的模块
-        path = urls_dict['saved_path'] + urls_dict[download_type] + '\\' + str(page) + '\\'
+        path = urls_dict['saved_path'] + urls_dict[download_type]['saved_name'] + '\\' + str(page) + '\\'
         #  print(path)
         if not os.path.exists(path):
             os.mkdir(path)
@@ -47,7 +47,7 @@ def get_img_content(url):
         browser.implicitly_wait(15)
 
         browser.execute_script("window.scrollTo(0, 3000);")
-        time.sleep(4)
+        time.sleep(2)
         # for i in range(1, 7):
         #     gap = "window.scrollTo(0, " + str(3500 + 1000 * i) + ");"
         #     browser.execute_script(gap)
@@ -72,7 +72,7 @@ def get_img_content(url):
             browser.implicitly_wait(15)
 
             browser.execute_script("window.scrollTo(0, 3000);")
-            time.sleep(4)
+            time.sleep(2)
             # for i in range(1, 7):
             #     gap = "window.scrollTo(0, " + str(3500 + 1000 * i) + ");"
             #     browser.execute_script(gap)
@@ -166,15 +166,15 @@ def download_by_pages(page_range):
         current_url = url.format(str(i))
         print("Current Page:" + current_url)
         success_list = download_page(current_url, i)
-        with open(saved_path + '\\saved_magnets.txt', 'a') as f:
+        with open(saved_path + '\\saved_magnets.txt', 'a', encoding="utf-8") as f:
             f.write('\n'.join(success_list))
             f.write('\n')
 
 
 if __name__ == '__main__':
-    download_type = 2
-    saved_page_range = [1, 10]
-    urls_dict = {'domain': 'https://www.177a592bb3c0.com/',
+    download_type = 1
+    saved_page_range = [1, 40]
+    urls_dict = {'domain': 'https://www.fc75ecc6aa65.com/',
                  'saved_path': 'E:\\Program Files (x86)\\Python\\pc\\cat\\',
                  1: {'url': 'cili/list-%E7%B4%A0%E4%BA%BA%E7%B3%BB%E5%88%97-{}.html',
                      'name': '素人系列',
